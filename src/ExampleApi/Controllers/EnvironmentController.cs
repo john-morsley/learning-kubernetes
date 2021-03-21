@@ -19,7 +19,7 @@ namespace ExampleApi.Controllers
         }
 
         [HttpGet]
-        [Route("/environment")]
+        
         public string Get()
         {
             return Environment.MachineName;
