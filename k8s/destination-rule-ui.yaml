@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: example-ui-destination-rule
+spec:
+  host: example-ui.morsley.io
+  subsets:
+  - name: version-1
+    labels:
+      version: website-version-1
+  #- name: version-2
+  #  labels:
+  #    version: website-version-2
+  #- name: version-3
+  #  labels:
+  #    version: website-version-3

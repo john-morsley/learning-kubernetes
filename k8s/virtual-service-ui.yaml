@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: example-ui-virtual-service
+  namespace: example
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - example-ui-gateway
+  http:
+  - route:
+    - destination:
+        host: example-ui-service.example.svc.cluster.local
+        port:
+          number: 6080

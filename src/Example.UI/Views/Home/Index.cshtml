@@ -1,0 +1,53 @@
+﻿@model Example.UI.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@{
+    var apiColour = "green";
+    if (string.IsNullOrEmpty(Model.ApiMachineName))
+    {
+        apiColour = "red";
+    }
+}
+
+<div class="text-center">
+    <br />
+    <div class="container" style="border: 2px dotted green; border-radius: 25px;">
+        <br />
+        <p class="text-muted">UI</p>
+        <p><span class="text-info">Machine Name:</span>&nbsp;<span class="text-dark font-weight-bold">@Model.UiMachineName</span></p>
+        <br />
+    </div>
+    <div class="container"><br /></div>
+    <div class="container" style="border: 2px dotted @apiColour; border-radius: 25px;">
+        <br />
+        <p class="text-muted">Service: API</p>
+        @if (Model.ApiError == null)
+        {
+            <p>
+                <span class="text-info">Machine Name:</span>
+                &nbsp;
+                <span class="text-dark font-weight-bold">@Model.ApiMachineName</span>
+            </p>
+        }
+        <p class="text-muted">API Endpoint: @Model.ApiEndPoint</p>
+        <p class="text-muted">Status Code: @Model.ApiHttpResponseCode</p>
+        @if (Model.ApiError != null)
+        {
+            <p class="text-muted">
+                Error:
+                @if (Model.ApiError != null)
+                {
+                    @Model.ApiError.Message
+                }
+                else
+                {
+                    <span>A unexpected error has occurred!</span>
+                }
+            </p>
+        }
+        <br />
+    </div>
+</div>

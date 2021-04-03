@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: example-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: example-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: example-api
+    spec:
+      containers:
+      - name: example-api-pod
+        image: johnmorsley/example-api:latest
+        #envFrom:
+        #  - configMapRef:
+        #      name: globo-identity-config
+        #  - secretRef:
+        #      name: globoconn-secrets 
+        #livenessProbe:
+        #  httpGet:
+        #    path: /.well-known/openid-configuration
+        #    port: 5000
+        #  initialDelaySeconds: 20
+        #  timeoutSeconds: 5
+        #  periodSeconds: 10
+        #  failureThreshold: 3
+        #readinessProbe:
+        #  httpGet:
+        #    path: /.well-known/openid-configuration
+        #    port: 5000
+        #  initialDelaySeconds: 20
+        #  timeoutSeconds: 5
+        #  periodSeconds: 10
+        #  failureThreshold: 3
+        #resources:
+        #  limits:
+        #    memory: "128Mi"
+        #    cpu: "200m"
+        ports:
+        - containerPort: 80

@@ -1,0 +1,20 @@
+{
+    "profiles": {
+        "Example.UI": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "API_ENDPOINT": "http://localhost:5000"
+            },
+            "dotnetRunMessages": "true",
+            "applicationUrl": "http://localhost:5001"
+        },
+        "Docker": {
+            "commandName": "Docker",
+            "launchBrowser": true,
+            "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+            "publishAllPorts": true
+        }
+    }
+}
