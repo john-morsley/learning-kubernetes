@@ -35,7 +35,7 @@ namespace Example.UI
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
             }
             app.UseStaticFiles();
 
@@ -47,7 +47,7 @@ namespace Example.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Environment}/{action=Index}/{id?}");
             });
         }
     }

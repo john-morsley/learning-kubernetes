@@ -1,20 +1,15 @@
 {
+    "$schema": "http://json.schemastore.org/launchsettings.json",
     "profiles": {
         "Example.UI": {
             "commandName": "Project",
             "launchBrowser": true,
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "API_ENDPOINT": "http://localhost:5000"
+                "API_ENDPOINT": "http://localhost:5000/api"
             },
             "dotnetRunMessages": "true",
             "applicationUrl": "http://localhost:5001"
-        },
-        "Docker": {
-            "commandName": "Docker",
-            "launchBrowser": true,
-            "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-            "publishAllPorts": true
         }
     }
 }

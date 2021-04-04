@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Example.UI.Models
 {
-    public class HomeViewModel
+    public class EnvironmentViewModel
     {
         public string UiMachineName { get; set; }
         public string ApiMachineName { get; set; }

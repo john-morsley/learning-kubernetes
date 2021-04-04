@@ -6,16 +6,15 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Example.UI.Models;
 
 namespace Example.UI.Controllers
 {
-    public class HomeController : Controller
+    public class EnvironmentController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<EnvironmentController> _logger;
         private IHttpClientFactory _clientFactory;
 
-        public HomeController(ILogger<HomeController> logger, IHttpClientFactory clientFactory)
+        public EnvironmentController(ILogger<EnvironmentController> logger, IHttpClientFactory clientFactory)
         {
             _logger = logger;
             _clientFactory = clientFactory;
@@ -25,7 +24,7 @@ namespace Example.UI.Controllers
         {
             var result = await GetApiMachineName();
 
-            var vm = new HomeViewModel();
+            var vm = new EnvironmentViewModel();
             vm.UiMachineName = Environment.MachineName;
             if (result.Object != null)
             {
@@ -64,11 +63,6 @@ namespace Example.UI.Controllers
                         var environmentResult = await response.Content.ReadFromJsonAsync<EnvironmentResult>();
                         result.Object = environmentResult;
                     }
-                    //else
-                    //{
-                    //     $"Could not determine API machine name ({response.ReasonPhrase})";
-                    //}
-
                     result.HttpResponseCode = response.StatusCode;
                     result.ReasonPhrase = response.ReasonPhrase;
                     return result;

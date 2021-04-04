@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace Example.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EnvironmentController : ControllerBase
     {
         private readonly ILogger<EnvironmentController> _logger;
@@ -18,7 +18,6 @@ namespace Example.API.Controllers
         [HttpGet]
         public EnvironmentResult Get()
         {
-            _logger.LogDebug("Getting Environment...");
             var environment = new EnvironmentResult
             {
                 MachineName = Environment.MachineName
