@@ -55,7 +55,7 @@ namespace Example.UI.Controllers
                     if (string.IsNullOrEmpty(endpoint)) throw new InvalidOperationException("API_ENDPOINT was not provided!");
                     result.Endpoint = endpoint;
                     var baseUri = new Uri(endpoint);
-                    var uri = new Uri(baseUri, "Environment");
+                    var uri = new Uri(baseUri, "api/environment");
                     var request = new HttpRequestMessage(HttpMethod.Get, uri);
                     var response = await client.SendAsync(request);
                     if (response.IsSuccessStatusCode)
