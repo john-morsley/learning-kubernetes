@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Example.API.Controllers
+namespace Example.API.Controllers.v2
 {
     [ApiController]
-    [Route("api/[controller]")]
+    //[Route("api/v{version:apiVersion}/environment")]
+    [Route("api/v2/environment")]
+    [ApiVersion("2.0")]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class EnvironmentController : ControllerBase
     {
         private readonly ILogger<EnvironmentController> _logger;

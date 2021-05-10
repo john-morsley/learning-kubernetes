@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Example.UI.Controllers
 {
@@ -13,11 +14,16 @@ namespace Example.UI.Controllers
     {
         private readonly ILogger<EnvironmentController> _logger;
         private IHttpClientFactory _clientFactory;
+        private readonly IConfiguration _configuration;
 
-        public EnvironmentController(ILogger<EnvironmentController> logger, IHttpClientFactory clientFactory)
+        public EnvironmentController(
+            ILogger<EnvironmentController> logger,
+            IHttpClientFactory clientFactory,
+            IConfiguration configuration)
         {
             _logger = logger;
             _clientFactory = clientFactory;
+            _configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -55,7 +61,7 @@ namespace Example.UI.Controllers
                     if (string.IsNullOrEmpty(endpoint)) throw new InvalidOperationException("API_ENDPOINT was not provided!");
                     result.Endpoint = endpoint;
                     var baseUri = new Uri(endpoint);
-                    var uri = new Uri(baseUri, "api/environment");
+                    var uri = new Uri(baseUri, "api/v1/environment");
                     var request = new HttpRequestMessage(HttpMethod.Get, uri);
                     var response = await client.SendAsync(request);
                     if (response.IsSuccessStatusCode)

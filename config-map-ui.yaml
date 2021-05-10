@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-settings
+  labels:
+    app: app-settings
+data:
+  key1: value1
+  key2: value2
